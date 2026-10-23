@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="AuRA: From Atoms to Bits through Autonomous Robot Interaction">
+  <meta name="keywords" content="real-to-sim, digital twin, deformable objects, autonomous data collection, robot manipulation, PhysTwin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AuRA: From Atoms to Bits through Autonomous Robot Interaction</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans&family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <span class="publication-aura">AuRA</span>: From Atoms to Bits through Autonomous Robot Interaction
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Xinchen Yu<sup>1</sup><sup>*</sup></span>
+              <span class="author-block">
+                <a href="https://yoonkyojung.com/">Yoonkyo Jung<sup>1</sup><sup>*</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://haoranchen.github.io/">Haoran Chen<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://zikuicai.github.io/">Zikui Cai<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://aayushwhiz.github.io/">Aayush Talreja<sup>1</sup></a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://sjlee.cc/">Seungjae Lee<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://hjhyunjinkim.github.io/">Hyunjin Kim<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://furong-huang.com/">Furong Huang<sup>1,2</sup></a>
+              </span>
+            </div>
+
+            <div class="is-size-6 publication-authors publication-footnotes">
+              <span class="eql-cntrb"><small><sup>*</sup>Equal contribution</small></span>
+            </div>
+            <div class="is-size-5 publication-authors publication-affiliations">
+              <span class="author-block"><sup>1</sup>University of Maryland, College Park</span>
+              <span class="author-block"><sup>2</sup>All Purpose AI</span>
+            </div>
+
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark coming-soon-link"
+                  data-tooltip="Coming soon">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark coming-soon-link"
+                  data-tooltip="Coming soon">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Yoonkyo/AuRA" class="external-link button is-normal is-rounded is-dark"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <figure class="image is-fullwidth">
+        <img src="./static/images/teaser.png" alt="AuRA: from physical interaction to digital twins">
+        <figcaption class="has-text-justified">
+          <p><strong>AuRA: from physical interaction to digital twins.</strong> AuRA replaces manual manipulation with
+            autonomous robot interaction, derives controller motion from robot states instead of visual tracking, and
+            uses pre-interaction priors to supplement robot-occluded regions, while retaining the same spring&ndash;mass
+            and 3D Gaussian representation.</p>
+        </figcaption>
+      </figure>
+
+      <div class="tldr-box">
+        <strong>TL;DR:</strong> AuRA lets a robot collect the interaction data needed to build physics-informed digital
+        twins of deformable objects, cutting active human labor per reconstructed asset by 88.5% while keeping
+        reconstruction quality comparable to human-collected data.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Abstract -->
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-centered">Abstract</h3>
+        <div class="content has-text-justified">
+          <p>
+            Simulation enables robot-learning experiments at scale, but acquiring physics-informed digital twins often
+            requires human manipulation and manual annotation of recorded interactions. To reduce this reliance on human
+            effort, we present AuRA, a system that automates robot interaction and data preparation for digital-twin
+            reconstruction. AuRA combines execution-aware grasp selection, gripper-motion measurements derived from robot
+            states, and registered pre-interaction geometry and appearance priors. These choices enable autonomous
+            collection, avoid reliance on visual gripper tracking, and recover object information obscured by the robot.
+            Across 13 deformable objects, AuRA reduces active human labor and wall-clock collection time per successfully
+            reconstructed asset by 88.5% and 55.4%, respectively. Relative to the human-collected PhysTwin baseline, AuRA
+            improves seven of nine metrics for future prediction under known gripper motion, including a 28.1% reduction
+            in one-way <i>L</i><sub>1</sub> Chamfer distance. It also achieves similar mean silhouette IoU and Chamfer
+            distance under the evaluated unseen interactions. These results highlight the potential of autonomous robot
+            interaction to support more efficient digital-twin acquisition with comparable reconstruction quality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Key ideas -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Three Design Choices</h3>
+      <div class="content has-text-justified">
+        <p>
+          Building digital twins from real interaction data usually requires a person to manipulate each object and
+          curate the recordings. Replacing that person with a robot raises three coupled challenges, which AuRA
+          addresses with three complementary design choices on top of the PhysTwin reconstruction backend.
+        </p>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="idea-card">
+            <div class="idea-number">1 &middot; Interaction</div>
+            <div class="idea-title">Execution-aware grasp selection</div>
+            <p class="idea-problem">A visually plausible grasp may violate joint limits or collide with the table or
+              cameras.</p>
+            <p>AnyGrasp candidates from a multi-view RGB-D scan are checked for tabletop clearance and joint-limit margins
+              along the planned motion. The robot executes the best feasible grasp-and-lift while recording RGB-D videos
+              and robot states.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="idea-card">
+            <div class="idea-number">2 &middot; Motion</div>
+            <div class="idea-title">Controller trajectories from robot states</div>
+            <p class="idea-problem">Visually estimated gripper trajectories suffer from segmentation, tracking, and depth
+              errors.</p>
+            <p>Recorded joint states and calibrated gripper geometry give the paths of gripper-attached controller points
+              directly, even when the gripper is occluded. Visual tracking is used only for the object's response.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="idea-card">
+            <div class="idea-number">3 &middot; Occlusion</div>
+            <div class="idea-title">Pre-interaction priors</div>
+            <p class="idea-problem">The gripper and arm hide parts of the object's geometry and appearance.</p>
+            <p>A static point cloud and a Gaussian appearance model built from the pre-interaction scan are registered to
+              the first interaction frame and fill in the regions the robot obscures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Pipeline -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Pipeline</h3>
+      <figure class="image is-fullwidth">
+        <img src="./static/images/pipeline.png" alt="AuRA pipeline overview">
+        <figcaption class="has-text-justified">
+          <p><strong>AuRA's autonomous physical-to-digital acquisition pipeline.</strong> Multi-view RGB-D capture
+            supports grasp generation and execution-feasibility filtering. The robot executes the selected grasp and
+            records the interaction with synchronized robot states. During processing, visual tracking provides object
+            trajectories, while robot poses and calibrated gripper geometry provide controller trajectories. AuRA also
+            constructs a static point cloud and trains a Gaussian appearance model from its pre-interaction captures,
+            then aligns both with the first interaction frame to supplement robot-occluded regions. These inputs support
+            spring&ndash;mass optimization and Gaussian rendering through the PhysTwin reconstruction backend.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3 has-text-centered">Results</h3>
+      <div class="content has-text-justified">
+        <p>
+          We evaluate on 13 deformable objects with a Franka robot arm and three RGB-D cameras, comparing against
+          human-operated collection with the PhysTwin pipeline by operators in three experience groups (amateur,
+          trained, expert).
+        </p>
+      </div>
+
+
+      <!-- 1. Collection efficiency -->
+      <h4 class="title is-4" style="margin-top: 2rem;">1. Data Collection Efficiency and Reliability</h4>
+
+      <div class="columns is-mobile stat-row">
+        <div class="column">
+          <div class="stat-box">
+            <div class="stat-value">88.5%</div>
+            <div class="stat-label">less active human labor per asset</div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="stat-box">
+            <div class="stat-value">55.4%</div>
+            <div class="stat-label">less wall-clock collection time per asset</div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="stat-box">
+            <div class="stat-value">2.8&times;</div>
+            <div class="stat-label">higher end-to-end reconstruction yield</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          AuRA produces 26 reconstructed assets from 35 acquisition attempts (74.3%), whereas human-operated collection
+          produces 21 from 78 attempts overall (26.9%). Per reconstructed asset, AuRA needs 126.7&nbsp;s of wall-clock
+          time and only 32.7&nbsp;s of human labor, since a person is needed only to place the object and start the
+          system, compared with 284.4&nbsp;s for human collection overall.
+        </p>
+      </div>
+
+      <figure class="image is-fullwidth">
+        <img src="./static/images/collection_efficiency.png" alt="Data collection efficiency and reconstruction reliability">
+        <figcaption class="has-text-justified">
+          <p><strong>Data collection efficiency and reconstruction reliability.</strong> Human (Overall) pools the three
+            groups below the dotted line. (a)&nbsp;End-to-end reconstruction rate: AuRA fails during acquisition, whereas
+            human recordings fail during data processing. (b)&nbsp;Wall-clock time (&#9675;) and human labor (&#9679;)
+            per reconstructed asset (log scale): the two are equal for human collection. (c)&nbsp;Mean failure detection
+            time. Collection costs exclude data processing, reconstruction training, and untimed backup trials.</p>
+        </figcaption>
+      </figure>
+
+      <br>
+
+
+      <!-- 2. Reconstruction quality -->
+      <h4 class="title is-4" style="margin-top: 2rem;">2. Resimulation and Future Prediction</h4>
+      <div class="content has-text-justified">
+        <p>
+          Following PhysTwin, the first 70% of each interaction is used for training and the remaining 30% for testing
+          under known controller motion. AuRA improves seven of nine future-prediction metrics, with clear gains in
+          silhouette and geometry: the one-way <i>L</i><sub>1</sub> Chamfer distance drops by 28.1% and depth coverage
+          rises by 9.9 points. PhysTwin, which retains about 2.4&times; more tracking points, fits the training frames
+          more closely.
+        </p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">Metric</th>
+              <th colspan="2">Resimulation</th>
+              <th colspan="2">Future Prediction</th>
+            </tr>
+            <tr>
+              <th>PhysTwin</th>
+              <th>AuRA</th>
+              <th>PhysTwin</th>
+              <th>AuRA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PSNR (dB) &uarr;</td><td><strong>12.289</strong></td><td>11.549</td><td>10.325</td><td><strong>10.590</strong></td></tr>
+            <tr><td>SSIM &uarr;</td><td><strong>0.9856</strong></td><td>0.9852</td><td><strong>0.9805</strong></td><td>0.9797</td></tr>
+            <tr><td>LPIPS &darr;</td><td><strong>0.0126</strong></td><td>0.0148</td><td>0.0233</td><td><strong>0.0230</strong></td></tr>
+            <tr><td>IoU &uarr;</td><td><strong>0.6675</strong></td><td>0.6090</td><td>0.4607</td><td><strong>0.5001</strong></td></tr>
+            <tr><td>Precision &uarr;</td><td><strong>0.7521</strong></td><td>0.7021</td><td>0.5899</td><td><strong>0.6132</strong></td></tr>
+            <tr><td>Recall &uarr;</td><td><strong>0.7972</strong></td><td>0.7791</td><td>0.6260</td><td><strong>0.7085</strong></td></tr>
+            <tr><td>Depth MAE (mm) &darr;</td><td><strong>21.797</strong></td><td>24.093</td><td><strong>27.784</strong></td><td>34.923</td></tr>
+            <tr><td>Depth Coverage &uarr;</td><td><strong>0.8152</strong></td><td>0.8050</td><td>0.6392</td><td><strong>0.7386</strong></td></tr>
+            <tr><td>One-Way <i>L</i><sub>1</sub> Chamfer (mm) &darr;</td><td>11.225</td><td><strong>10.104</strong></td><td>23.335</td><td><strong>16.783</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-title" style="margin-top: 0.75rem;">
+        Metrics are averaged within each object and then equally across 13 objects. PhysTwin uses 29 human trajectories;
+        AuRA uses 26 robot trajectories.
+      </p>
+
+      <br>
+
+
+      <!-- 3. Unseen interactions -->
+      <h4 class="title is-4" style="margin-top: 2rem;">3. Unseen Interactions</h4>
+      <div class="content has-text-justified">
+        <p>
+          For each object, one asset per method is driven by a new, teleoperated drag-and-lift interaction. AuRA with
+          static Gaussians and PhysTwin reach similar mean performance (mask IoU 0.3861 vs. 0.3849, one-way Chamfer
+          43.554&nbsp;mm vs. 43.430&nbsp;mm, PSNR 10.379&nbsp;dB vs. 10.309&nbsp;dB). Static Gaussians trained on the
+          pre-interaction scan also beat first-frame Gaussians on every appearance and silhouette metric, because they
+          keep the appearance of regions the robot later covers.
+        </p>
+      </div>
+
+      <div class="unseen-grid">
+        <div class="columns is-mobile is-variable is-1">
+          <div class="column is-2"></div>
+          <div class="column unseen-header">Data collection<br>frame 0 (GT)</div>
+          <div class="column unseen-header">Rendering overlay on<br>unseen interaction</div>
+          <div class="column unseen-header">Unseen interaction<br>frame 0 (GT)</div>
+        </div>
+        <div class="columns is-mobile is-variable is-1">
+          <div class="column is-2 unseen-row-label">AuRA<br>Static GS</div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_reconstruction_data_frame0.png" alt="AuRA data collection frame 0"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_static_gs_overlay_50_50.png" alt="AuRA static Gaussian overlay"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_gt.png" alt="AuRA unseen interaction ground truth"></figure></div>
+        </div>
+        <div class="columns is-mobile is-variable is-1">
+          <div class="column is-2 unseen-row-label">AuRA<br>First-frame GS</div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_reconstruction_data_frame0.png" alt="AuRA data collection frame 0"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_frame0_gs_overlay_50_50.png" alt="AuRA first-frame Gaussian overlay"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/AuRA_gt.png" alt="AuRA unseen interaction ground truth"></figure></div>
+        </div>
+        <div class="columns is-mobile is-variable is-1">
+          <div class="column is-2 unseen-row-label">PhysTwin</div>
+          <div class="column"><figure><img src="./static/images/unseen/PhysTwin_reconstruction_data_frame0.png" alt="PhysTwin data collection frame 0"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/PhysTwin_overlay_50_50.png" alt="PhysTwin rendering overlay"></figure></div>
+          <div class="column"><figure><img src="./static/images/unseen/PhysTwin_gt.png" alt="PhysTwin unseen interaction ground truth"></figure></div>
+        </div>
+        <p class="table-title has-text-justified" style="margin-top: 0.5rem;">
+          <strong>Object appearance at the first frame of an unseen interaction.</strong> The rendered asset is manually
+          aligned to the unseen interaction and overlaid 50/50 on its ground truth.
+        </p>
+      </div>
+
+      <br>
+
+
+      <!-- 4. Ablations -->
+      <h4 class="title is-4" style="margin-top: 2rem;">4. Ablations</h4>
+      <div class="content has-text-justified">
+        <ul>
+          <li>
+            <strong>Controller trajectory source.</strong> On the same 26 robot-collected trajectories, controllers
+            derived from robot states enable successful reconstruction in <strong>26/26</strong> cases (100.0%),
+            compared with <strong>2/26</strong> (7.7%) for controllers obtained through visual tracking, depth lifting,
+            and PhysTwin-style filtering.
+          </li>
+          <li>
+            <strong>Static geometry prior.</strong> Adding the registered pre-interaction point cloud improves most
+            metrics for every object tracker tested (CoTracker3, MVTracker, MV-TAP).
+          </li>
+          <li>
+            <strong>Object tracker.</strong> Among point-cloud-initialized trackers, MV-TAP generally performs best in
+            both resimulation and future prediction.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h3 class="title">BibTeX</h3>
+      <div class="bibtex-block">
+        <button type="button" class="button is-small is-rounded bibtex-copy-btn" id="bibtex-copy-btn"
+          aria-label="Copy BibTeX to clipboard">
+          <span class="icon">
+            <i class="fas fa-copy"></i>
+          </span>
+          <span class="bibtex-copy-label">Copy</span>
+        </button>
+        <pre class="bibtex-pre"><code id="bibtex-code">@article{yu2026aura,
+  title={{AuRA}: From Atoms to Bits through Autonomous Robot Interaction},
+  author={Yu, Xinchen and Jung, Yoonkyo and Chen, Haoran and Cai, Zikui and Talreja, Aayush and Lee, Seungjae and Kim, Hyunjin and Huang, Furong},
+  journal={arXiv preprint},
+  year={2026}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <p>
+            Website template adapted from
+            <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> under the
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+              CC BY-SA 4.0 License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

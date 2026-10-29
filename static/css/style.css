@@ -176,7 +176,7 @@ table.res { width: 100%; border-collapse: collapse; font-size: 14.5px; font-vari
 table.res th, table.res td { padding: 8px 12px; text-align: center; border-bottom: 1px solid var(--line); white-space: nowrap; }
 table.res thead th { font-weight: 700; color: var(--ink); background: var(--bg-alt); }
 table.res thead tr:first-child th { border-bottom: none; }
-table.res td:first-child, table.res th:first-child { text-align: left; }
+table.res td:first-child, table.res thead tr:first-child th:first-child { text-align: left; }
 table.res th.grp { border-left: 1px solid var(--line); }
 table.res td.gl { border-left: 1px solid var(--line); }
 table.res td b { color: var(--ink); font-weight: 700; }
